@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head lang="es">
+    <meta charset="UTF-8">
+    <title>{% block titulo %}{% endblock titulo %}</title>
+    {% block estilo %} {% endblock estilo %}
+</head>
+<body>
+<header> {% block encabezado %}{% endblock encabezado %}</header>
+<nav>
+    <li href="/">Inicio</li>
+    <li href="/nuevo/cliente/">Cliente Nuevo</li>
+    <li href="/listado/clientes/">lista de Clientes</li>
+</nav>
+<section class="contenido">
+    {% block contenido %}{% endblock contenido %}
+</section>
+
+</body>
+</html>

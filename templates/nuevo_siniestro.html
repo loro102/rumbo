@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block titulo %} Nuevo Cliente{% endblock titulo %}
+{% block encabezado %}<center> <h1>Nuevo Siniestro</h1></center>{% endblock encabezado %}
+{% block estilo %}
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+    <link rel="stylesheet" href="/resources/demos/style.css" />
+{% endblock estilo %}
+{% block contenido %}
+<form id="formulario" method="post" enctype="multipart/form-data" action="" class='formulario'>{% csrf_token %}
+<table>
+   {% for field in formulario %}
+        <div class="{{ field.name }}">
+            {{ field.errors }}
+            {{ field.label_tag }} {{ field }}
+        </div>
+    {% endfor %}
+<input type="submit" value="dar de alta" class="boton" /></form>
+{% endblock contenido %}
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head lang="es">
+    <meta charset="UTF-8">
+    <title></title>
+
+<link href="static/css/base.css" type="text/css" rel="stylesheet" />
+    <style> </style>
+</head>
+<body>
+<header> </header>
+
+<section class="contenido">
+    
+<form id="formulario" method="post" enctype="multipart/form-data" action=""><input type='hidden' name='csrfmiddlewaretoken' value='MkdWyPuQENuWolaAxvSjDcBB47lPZPrV' />
+<table>
+   
+        <div class="nombre">
+            
+            <label for="id_nombre">Nombre:</label> <input id="id_nombre" maxlength="255" name="nombre" type="text" />
+        </div>
+    
+        <div class="apellido1">
+            
+            <label for="id_apellido1">Apellido1:</label> <input id="id_apellido1" maxlength="255" name="apellido1" type="text" />
+        </div>
+    
+        <div class="apellido2">
+            
+            <label for="id_apellido2">Apellido2:</label> <input id="id_apellido2" maxlength="255" name="apellido2" type="text" />
+        </div>
+    
+        <div class="agente">
+            
+            <label for="id_agente">Agente:</label> <input id="id_agente" maxlength="255" name="agente" type="text" />
+        </div>
+    
+        <div class="nif">
+            
+            <label for="id_nif">Nif:</label> <input id="id_nif" maxlength="255" name="nif" type="text" />
+        </div>
+    
+        <div class="direccion">
+            
+            <label for="id_direccion">Direccion:</label> <input id="id_direccion" maxlength="255" name="direccion" type="text" />
+        </div>
+    
+        <div class="postal">
+            
+            <label for="id_postal">Postal:</label> <input id="id_postal" maxlength="5" name="postal" type="text" />
+        </div>
+    
+        <div class="telefono">
+            
+            <label for="id_telefono">Telefono:</label> <input id="id_telefono" maxlength="9" name="telefono" type="text" />
+        </div>
+    
+        <div class="telefono2">
+            
+            <label for="id_telefono2">Telefono2:</label> <input id="id_telefono2" maxlength="9" name="telefono2" type="text" />
+        </div>
+    
+        <div class="mobil">
+            
+            <label for="id_mobil">Mobil:</label> <input id="id_mobil" maxlength="9" name="mobil" type="text" />
+        </div>
+    
+        <div class="email">
+            
+            <label for="id_email">Email:</label> <input id="id_email" maxlength="75" name="email" type="email" />
+        </div>
+    
+        <div class="ccc">
+            
+            <label for="id_ccc">Ccc:</label> <input id="id_ccc" maxlength="255" name="ccc" type="text" />
+        </div>
+    
+        <div class="notas">
+            
+            <label for="id_notas">Notas:</label> <textarea cols="40" id="id_notas" name="notas" rows="10">
+</textarea>
+        </div>
+    
+<input type="submit" value="dar de alta" /></form>
+
+</section>
+
+</body>
+</html>

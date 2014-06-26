@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block titulo %} Nuevo Cliente{% endblock titulo %}
+{% block encabezado %}<center> <h1>Nuevo Cliente</h1></center>{% endblock encabezado %}
+{% block estilo %}{% load staticfiles %}
+<link href="static/css/base.css" type="text/css" rel="stylesheet" />
+{% endblock estilo %}
+{% block contenido %}
+<form id="formulario" method="post" enctype="multipart/form-data" action="" class='formulario'>{% csrf_token %}
+<table>
+   {% for field in formulario %}
+        <div class="{{ field.name }}">
+            {{ field.errors }}
+            {{ field.label_tag }} {{ field }}
+        </div>
+    {% endfor %}
+<input type="submit" value="dar de alta" class="boton" /></form>
+{% endblock contenido %}
+</body>
+</html>
