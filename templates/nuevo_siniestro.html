@@ -6,52 +6,17 @@
     <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
     <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
     <link rel="stylesheet" href="/resources/demos/style.css" />
-    <script type="text/javascript">
-$(document).ready(function() {
-    $("#ok").hide();
 
-    $("#formulario").validate({
-        rules: {
-            id_reprenombre: { required: true, minlength: 2},
-            lastname: { required: true, minlength: 2},
-            email: { required:true, email: true},
-            phone: { minlength: 2, maxlength: 15},
-            years: { required: true},
-            message: { required:true, minlength: 2}
-        },
-        messages: {
-            id_reprenombre: "Debe introducir su nombre.",
-            lastname: "Debe introducir su apellido.",
-            email : "Debe introducir un email válido.",
-            phone : "El número de teléfono introducido no es correcto.",
-            years : "Debe introducir solo números.",
-            message : "El campo Mensaje es obligatorio.",
-        },
-        submitHandler: function(form){
-            var dataString = 'name='+$('#id_reprenombre').val()+'&lastname='+$('#lastname').val()+'...';
-            $.ajax({
-                type: "POST",
-                url:"send.php",
-                data: dataString,
-                success: function(data){
-                    $("#ok").html(data);
-                    $("#ok").show();
-                    $("#formulario").hide();
-                }
-            });
-        }
-    });
-});
-</script>
+
 {% endblock estilo %}
 {% block contenido %}
 <form id="formulario" method="post" enctype="multipart/form-data" action="" class='formulario'>{% csrf_token %}
-<div id="ok"></div>
     <table>
-   {% for field in formulario %}
+        : <input type="checkbox" name="cc_myself"/>
+        {% for field in formulario %}
         <div class="{{ field.name }}">
             {{ field.errors }}
-            {{ field.label_tag }} {{ field }}
+            {{ field.label_tag }} {{ field }} {{ field.help_text }}
         </div>
     {% endfor %}
 <input type="submit" value="dar de alta" class="boton" /></form>

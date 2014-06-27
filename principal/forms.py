@@ -2,21 +2,32 @@
 from django.forms import ModelForm
 from django import forms
 from django.core.exceptions import ValidationError
+from localflavor.es.forms import *
+from localflavor.generic.forms import *
 
 from principal.models import cliente,agente,siniestro
 
 #Formulario para introducir clientes
 class clienteform(ModelForm):
+	nif = ESIdentityCardNumberField ()
+	postal = ESPostalCodeField ()
+	ccc = ESCCCField ()
 	class Meta:
 		model = cliente
 
+
 #Formulario para introducir agentes
 class agenteform(ModelForm):
+	nif = ESIdentityCardNumberField ()
+	postal = ESPostalCodeField ()
+	ccc = ESCCCField ()
 	class Meta:
 		model=agente
+
+
 # Formulario para introducir siniestros
 class siniestroform(ModelForm):
-
+	reprenif = ESIdentityCardNumberField ()
 	class Meta:
 		model=siniestro
 		exclude=['cliente']
@@ -29,7 +40,6 @@ class siniestroform(ModelForm):
 		                altadireccion=forms.DateInput(format='%d/%m/%y',attrs={'type':'date'}),
 		                fechapoliza=forms.DateInput(format='%d/%m/%y',attrs={'type':'date'}),
 		                finpoliza =forms.DateInput(format='%d/%m/%y',attrs={'type':'date'}),
+
 		)
-
-
 
