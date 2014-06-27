@@ -31,3 +31,5 @@ class siniestroform(ModelForm):
 		                finpoliza =forms.DateInput(format='%d/%m/%y',attrs={'type':'date'}),
 		)
 
+
+
