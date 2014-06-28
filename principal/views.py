@@ -7,7 +7,8 @@ from django.shortcuts import render_to_response, get_object_or_404,render
 from django.contrib.auth.forms import UserCreationForm
 
 from principal.models import cliente
-from principal.forms import clienteform, siniestroform, agenteform
+from principal.forms import clienteform, siniestroform, agenteform, aseguradoraform, tramitadorciaform, profesionalform, \
+	facturaform, documentacionform, notaform
 
 
 
@@ -58,3 +59,76 @@ def nuevo_siniestro (request,cliente_id):
 		formulario = siniestroform ()
 	return render_to_response ('nuevo.html', {'formulario': formulario},
 		                           context_instance=RequestContext (request))
+
+
+# aseguradora
+def nueva_aseguradora (request):
+	if request.method == 'POST':
+		formulario = aseguradoraform (request.POST)
+		if formulario.is_valid ():
+			formulario.save ()
+			return HttpResponseRedirect ('/')
+	else:
+		formulario = aseguradoraform ()
+	return render_to_response ('nuevo.html', {'formulario': formulario}, context_instance=RequestContext (request))
+
+
+# tramitador cia
+def nuevo_tramitadorcia (request):
+	if request.method == 'POST':
+		formulario = tramitadorciaform (request.POST)
+		if formulario.is_valid ():
+			formulario.save ()
+			return HttpResponseRedirect ('/')
+	else:
+		formulario = tramitadorciaform ()
+	return render_to_response ('nuevo.html', {'formulario': formulario}, context_instance=RequestContext (request))
+
+
+# profesional
+def nuevo_profesional (request):
+	if request.method == 'POST':
+		formulario = profesionalform (request.POST)
+		if formulario.is_valid ():
+			formulario.save ()
+			return HttpResponseRedirect ('/')
+	else:
+		formulario = profesionalform ()
+	return render_to_response ('nuevo.html', {'formulario': formulario}, context_instance=RequestContext (request))
+
+
+# factura
+def nueva_factura (request):
+	if request.method == 'POST':
+		formulario = facturaform (request.POST)
+		if formulario.is_valid ():
+			formulario.save ()
+			return HttpResponseRedirect ('/')
+	else:
+		formulario = facturaform ()
+	return render_to_response ('nuevo.html', {'formulario': formulario}, context_instance=RequestContext (request))
+
+
+# documentacion
+def nueva_documentacion (request):
+	if request.method == 'POST':
+		formulario = documentacionform (request.POST)
+		if formulario.is_valid ():
+			formulario.save ()
+			return HttpResponseRedirect ('/')
+	else:
+		formulario = documentacionform ()
+	return render_to_response ('nuevo.html', {'formulario': formulario}, context_instance=RequestContext (request))
+
+
+# notas
+def nueva_nota (request):
+	if request.method == 'POST':
+		formulario = notaform (request.POST)
+		if formulario.is_valid ():
+			formulario.save ()
+			return HttpResponseRedirect ('/')
+	else:
+		formulario = notaform ()
+	return render_to_response ('nuevo.html', {'formulario': formulario}, context_instance=RequestContext (request))
+
