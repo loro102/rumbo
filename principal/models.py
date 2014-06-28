@@ -35,12 +35,12 @@ class aseguradora (models.Model):
 	aseguradora = models.CharField (max_length=255)
 	telefono = models.CharField (max_length=9)
 	fax = models.CharField (max_length=9, null=True, blank=True)
-	email = models.EmailField (max_length=75)
+	email = models.EmailField (max_length=75, null=True, blank=True)
 	direccion = models.CharField (max_length=255)
 	postal = models.CharField (max_length=255)
 	localidad = models.CharField (max_length=255)
 	provincia = models.CharField (max_length=255)
-	notas = models.TextField ()
+	notas = models.TextField (null=True, blank=True)
 
 	def __str__ (self):
 		return self.aseguradora
@@ -52,10 +52,10 @@ class tramitadorcia (models.Model):
 	nombre = models.CharField (max_length=255)
 	telefono = models.CharField (max_length=9)
 	fax = models.CharField (max_length=9, null=True, blank=True)
-	email = models.EmailField (max_length=75)
+	email = models.EmailField (max_length=75, null=True, blank=True)
 	aseguradora = models.ForeignKey (aseguradora)
-	cargo = models.CharField (max_length=255)
-	notas = models.TextField ()
+	cargo = models.CharField (max_length=255, null=True, blank=True)
+	notas = models.TextField (null=True, blank=True)
 
 	def __str__ (self):
 		return self.nombre
@@ -78,7 +78,7 @@ class profesional (models.Model):
 	fax = models.CharField (max_length=9, null=True, blank=True)
 	email = models.EmailField (max_length=75, null=True, blank=True)
 	pago = models.CharField (max_length=75, null=True, blank=True)
-	indemnizacion = models.BooleanField (default='true', blank=True)
+	indemnizacion = models.BooleanField (blank=True)
 
 	def __str__ (self):
 		return self.nombre
@@ -160,8 +160,8 @@ class siniestro (models.Model):
 	poliza = models.CharField (max_length=20, verbose_name='Nº de la Póliza de Seguro', blank=True)
 	referencia = models.CharField (max_length=30, verbose_name='Nº de Referencia del Expediente', null=True, blank=True)
 	aseguradora = models.ForeignKey (aseguradora, verbose_name='Compañía de seguros')
-	fechapoliza = models.DateField (verbose_name='Fecha de la Póliza', blank=True)
-	finpoliza = models.DateField (verbose_name='Fecha de Caducidad de la Póliza', blank=True)
+	fechapoliza = models.DateField (verbose_name='Fecha de la Póliza', blank=True, null=True)
+	finpoliza = models.DateField (verbose_name='Fecha de Caducidad de la Póliza', blank=True, null=True)
 	estimacion = models.CharField (max_length=10, verbose_name='Estimacíon de la indemnización', null=True, blank=True)
 	ofertamotivada = models.DateField (verbose_name='Fecha de Oferta Motivada', null=True, blank=True)
 	audienciaprevia = models.DateField (verbose_name='Fecha de Audiencia Previa', null=True, blank=True)

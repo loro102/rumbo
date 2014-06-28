@@ -31,10 +31,10 @@ class agenteform (ModelForm):
 # Formulario para introducir siniestros
 class siniestroform (ModelForm):
 	reprenif = ESIdentityCardNumberField (help_text='Introduzca el Dni,el Cif o el Nief', required=False)
-
 	class Meta:
 		model = siniestro
-		exclude = ['cliente']
+		exclude = ['cliente', 'tramitadorcia', 'fase', 'demanda', 'denuncia', 'juicio', 'audienciaprevia',
+		           'ofertamotivada', 'respuestamotivada']
 		widgets = dict (fechasiniestro=forms.DateTimeInput (format='%d/%m/%y', attrs={'type': 'date'}),
 		                horasiniestro=forms.DateTimeInput (format='%H:%m', attrs={'type': 'time'}),
 		                fechabajalaboral=forms.DateInput (format='%d/%m/%y', attrs={'type': 'date'}),
@@ -44,6 +44,7 @@ class siniestroform (ModelForm):
 		                altadireccion=forms.DateInput (format='%d/%m/%y', attrs={'type': 'date'}),
 		                fechapoliza=forms.DateInput (format='%d/%m/%y', attrs={'type': 'date'}),
 		                finpoliza=forms.DateInput (format='%d/%m/%y', attrs={'type': 'date'}),
+
 
 		)
 
@@ -58,6 +59,7 @@ class aseguradoraform (ModelForm):
 class tramitadorciaform (ModelForm):
 	class Meta:
 		model = tramitadorcia
+		exclude = ['aseguradora']
 
 
 # Formulario para introducir profesionales
