@@ -13,6 +13,7 @@ urlpatterns = patterns('',
 	#Aqui iran todos los enlaces del programa
 	url(r'^$','principal.views.lista_clientes'),
 	url(r'^cliente/nuevo/$','principal.views.nuevo_cliente'),#Enlace para insertar clientes nuevos
+	url (r'^agente/nuevo/$', 'principal.views.nuevo_agente'),  # Enlace para insertar clientes nuevos
 	url(r'^siniestro/nuevo/(?P<cliente_id>\d+)','principal.views.nuevo_siniestro'),#enlace para insertar siniestros
     url(r'^admin/', include(admin.site.urls)),
 )#Configuracion para servir la carpeta Static

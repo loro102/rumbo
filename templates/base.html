@@ -3,15 +3,52 @@
 <head lang="es">
     <meta charset="UTF-8">
     <title>{% block titulo %}{% endblock titulo %}</title>
+    {% block javascript %} {% endblock javascript %}
     {% block estilo %} {% endblock estilo %}
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css"/>
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+
+    {#menu script#}
+    <script>
+        $(function () {
+            $("#menu").menu();
+        });
+    </script>
 </head>
 <body>
 <header> {% block encabezado %}{% endblock encabezado %}</header>
+
 <nav>
-    <li href="/">Inicio</li>
-    <li href="/nuevo/cliente/">Cliente Nuevo</li>
-    <li href="/listado/clientes/">lista de Clientes</li>
+    <div style="position: absolute; top: 20px; left: 0px; z-index: 100">
+        <ul id="menu">
+            <li><a href="/">Inicio</a>
+            </li>
+            <li><a href="#">Clientes</a>
+                <ul>
+                    <li><a href="/cliente/nuevo/">Nuevo</a></li>
+                    <li><a href="/cliente/listado/">Listado de Clientes</a></li>
+            </li>
+        </ul>
+        </li>
+        <li><a href="#">Siniestro</a>
+            <ul>
+                <li><a href="#31">Listado</a></li>
+                <li><a href="#32">Filtrados</a></li>
+                <li><a href="#33">Narrativa</a></li>
+            </ul>
+        </li>
+        <li><a href="#">Quevedo</a>
+            <ul>
+                <li><a href="#31">Biografía</a></li>
+                <li><a href="#32">Obra teatral</a></li>
+                <li><a href="#33">Obra poética</a></li>
+            </ul>
+        </li>
+        </ul>
+    </div>
 </nav>
+
 <section class="contenido">
     {% block contenido %}{% endblock contenido %}
 </section>

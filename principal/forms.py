@@ -9,25 +9,25 @@ from principal.models import cliente,agente,siniestro
 
 #Formulario para introducir clientes
 class clienteform(ModelForm):
-	nif = ESIdentityCardNumberField ()
-	postal = ESPostalCodeField ()
-	ccc = ESCCCField ()
+	nif = ESIdentityCardNumberField (help_text='Introduzca el Dni,el Cif o el Nief')
+	postal = ESPostalCodeField (help_text='Introduzca el código postal')
+	ccc = ESCCCField (help_text='Introduzca la Cuenta Bancaria', required=False)
 	class Meta:
 		model = cliente
 
 
 #Formulario para introducir agentes
 class agenteform(ModelForm):
-	nif = ESIdentityCardNumberField ()
-	postal = ESPostalCodeField ()
-	ccc = ESCCCField ()
+	nif = ESIdentityCardNumberField (help_text='Introduzca el Dni,el Cif o el Nief')
+	postal = ESPostalCodeField (help_text='Introduzca el código postal')
+	ccc = ESCCCField (help_text='Introduzca la Cuenta Bancaria', required=False)
 	class Meta:
 		model=agente
 
 
 # Formulario para introducir siniestros
 class siniestroform(ModelForm):
-	reprenif = ESIdentityCardNumberField ()
+	reprenif = ESIdentityCardNumberField (help_text='Introduzca el Dni,el Cif o el Nief', required=False)
 	class Meta:
 		model=siniestro
 		exclude=['cliente']
