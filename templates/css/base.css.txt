@@ -1,3 +1,0 @@
-﻿.nombre{
-    background-color:#f30b0b;
-}

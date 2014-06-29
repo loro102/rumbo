@@ -1,6 +1,7 @@
 # encoding: utf-8
 from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
+from smart_selects.db_fields import *
 
 
 # Create your models here.
@@ -169,8 +170,9 @@ class siniestro (models.Model):
 	juicio = models.DateField (verbose_name='Fecha de Juicio', null=True, blank=True)
 	denuncia = models.DateField (verbose_name='Fecha de Denuncia', null=True, blank=True)
 	demanda = models.DateField (verbose_name='Fecha de Demanda', null=True, blank=True)
-	tramitadorcia = models.ForeignKey (tramitadorcia, verbose_name='Tramitador de la Aseguradora', null=True,
-	                                   blank=True)
+	tramitadorcia = ChainedForeignKey (tramitadorcia, chained_field='aseguradora', chained_model_field='aseguradora',
+	                                   show_all=False, auto_choose=False, verbose_name='Tramitador Aseguradora',
+	                                   null=True, blank=True)
 	fase = models.CharField (max_length=255, verbose_name='Fase', null=True, blank=True)
 
 	def __str__ (self):

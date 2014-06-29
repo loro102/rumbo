@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block titulo %} Nuevo Cliente{% endblock titulo %}
+{% block encabezado %}
+    <center> <h1>Nuevo Cliente</h1></center>{% endblock encabezado %}
+{% block estilo %}{% load staticfiles %}
+    <link href="static/css/base.css" type="text/css" rel="stylesheet"/>
+{% endblock estilo %}
+{% block contenido %}
+
+    <div class="table">
+        <ul>
+            <li class="heading">Cliente</li>{% for elemento in lista %}
+            <li><a href='/'>{{ elemento.apellido1 }} {{ elemento.apellido2 }}, {{ elemento.nombre }}</a>
+            </li>{% endfor %}
+        </ul>
+        <ul>
+            <li class="heading">DNI</li>{% for elemento in lista %}
+            <li>{{ elemento.nif }}</li>{% empty %}
+            <li>#########</li>{% endfor %}
+        </ul>
+        <ul>
+            <li class="heading">Telefono</li>{% for elemento in lista %}
+            <li>{{ elemento.telefono }}</li>{% empty %}
+            <li>#########</li>{% endfor %}
+        </ul>
+    </div>
+{% endblock contenido %}

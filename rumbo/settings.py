@@ -27,7 +27,7 @@ TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
+JQUERY_URL = 'http://code.jquery.com/jquery-1.9.1.js'
 # Application definition
 
 INSTALLED_APPS = (
@@ -38,7 +38,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'localflavor',
-    'selectable',
+    'smart_selects',
     'principal',
 )
 

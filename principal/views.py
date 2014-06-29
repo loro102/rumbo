@@ -15,10 +15,21 @@ from principal.forms import clienteform, siniestroform, agenteform, aseguradoraf
 
 
 # Create your views here.
+def inicio (request):
+	clientes = cliente.objects.all ()
+	return render_to_response ('listado_clientes.html', {'lista': clientes}, context_instance=RequestContext (request))
+
+
 # muestra la lista de clientes en la plantilla
 def lista_clientes (request):
 	clientes = cliente.objects.all ()
-	return render_to_response ('lista_clientes.html', {'lista': clientes})
+	return render_to_response ('listado_clientes.html', {'lista': clientes}, context_instance=RequestContext (request))
+
+
+# detalle de los clientes
+def cliente_detalle (request):
+	dato = get_object_or_404 (cliente, pk=id_cliente)
+	return render_to_response ('cliente_detalle.html', {'cliente': dato}, context_instance=RequestContext (request))
 
 
 #Muestra el formulario,lo valida y si el formulario se ha rellenado completamente lo guarda en la base de datos
