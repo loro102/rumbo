@@ -34,14 +34,14 @@ def cliente_detalle (request, cliente_id):
 
 def siniestro_detalle (request, siniestro_id):
 	dato = get_object_or_404 (Siniestro, pk=siniestro_id)
-	# cliente= Cliente.objects.filter (id=dato)
+	cliente = Cliente.objects.filter (id=dato.cliente)
 	facturas = Factura.objects.filter (siniestro=dato)
 	notas = Nota.objects.filter (siniestro=dato)
 	documentacion = Documentacion.objects.filter (siniestro=dato)
 	asignado = Asignado.objects.filter (siniestro=dato)
 
 	return render_to_response ('detalle_siniestro.html',
-	                           {'siniestro': dato, 'cliente': cliente, 'facturas': facturas, 'notas': notas,
+	                           {'cliente': cliente, 'siniestro': dato, 'facturas': facturas, 'notas': notas,
 	                            'documentacion': documentacion, 'asignado': asignado},
 	                           context_instance=RequestContext (request))
 

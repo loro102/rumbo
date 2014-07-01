@@ -3,37 +3,90 @@
 {% block encabezado %}
     <div style="text-align: center;"><h1>Nuevo Cliente</h1></div>{% endblock encabezado %}
 {% block estilo %}{% load staticfiles %}
+    <link href="static/css/pestañas.css" type="text/css" rel="stylesheet"/>
     <link href="static/css/listado.css" type="text/css" rel="stylesheet"/>
 {% endblock estilo %}
 {% block javascript %}
-    <script src="http://code.jquery.com/jquery-latest.js">
-        <!--
-        mce:0-->
-    </script>
-    <script src="http://dev.jquery.com/view/tags/ui/latest/ui/ui.core.js" type="text/javascript">
-        <!--
-        mce:1-->
-    </script>
-    <script src="http://dev.jquery.com/view/tags/ui/latest/ui/ui.tabs.js" type="text/javascript">
-        <!--
-        mce:2-->
-    </script>
-    <script type="text/javascript">
-        <!--
-        mce:3-->
-    </script>
-{% endblock %}
+    <script type="text/javascript" language="javascript">// <![CDATA[
+    $(function (activar_pestanya) {
+        // llamamos a la función y la nombramos
+        var tabContainerssup = $('div.contenedor > div');
+        // Convertimos una ruta en una variable, así la llamada a esa ruta será más fácil
+
+        $('div.tab a').click(function () {
+            // ahora le estamos diciendo que active la siguiente
+            // función cada vez que clickamos dentro de los a situados dentro del div tab
+
+            tabContainerssup.hide().filter(this.hash).show();
+            // con la variable que hemos creado antes, le decimos que oculte todo su contenido, y que sólo muestre el contenido del anchor que hemos clickado
+
+            return false;
+            // ponemos esta linia para que no se nos desplace al hacer click arriba de la página
+
+        }).filter(':first').click();
+        // esta sentencia indica que lo primero que mostrará sera el primer anchor de la lista, si pusiéramos :last en vez de :first mostraría el último en un principio
+    });
+    // ]]></script>
+{% endblock javascript %}
+
+
 {% block contenido %}
-    <div id="EJEMPLO" class="estilo">
-        <ul>
-            <li><a href="#tab-1">Título 1</a></li>
-            <li><a href="#tab-2">Título 2</a></li>
-        </ul>
-        <div id="tab-1">
-            Aquí el contenido
-        </div>
-        <div id="tab-2">
-            Aquí el contenido
-        </div>
+
+
+    <div class="tab">
+        <a href="#primero">Principal</a><a href="#profesional">Profesionales</a><a href="#tercero">Facturas</a><a
+            href="#cuarto">Documentacion</a><a href="#quinto">Indemnizacion</a><a href="#sexto">Notas</a>
+
+        <div class="clear"></div>
     </div>
+    <div class="contenedor">
+        <div id="primero">hola</div>
+        <div id="profesional">
+            <div class="tabla">
+                <table>
+                    <tr>
+                        <td>
+                            Profesional
+                        </td>
+                        <td>
+                            Opciones
+                        </td>
+                        <td>
+                            Documentos
+                        </td>
+                    </tr>{% for elemento in asignado %}
+                    <tr>
+                        <td>
+                            {{ elemento.profesional }} {{ elemento.apellido2 }}, {{ elemento.nombre }}</a>
+                        </td>
+                        <td>
+                            {{ elemento.nif }}
+                        </td>
+                        <td>
+                            {{ elemento.telefono }}
+                        </td>
+                    </tr>{% endfor %}
+                </table>
+            </div>
+        </div>
+        <div id="tercero">{{ cliente.nombre }}cruel</div>
+        <div id="cuarto">sin</div>
+        <div id="quinto">corazon</div>
+        <div id="sexto">maldito</div>
+
+    </div>
+    <script language="javascript">
+        <!--
+        $(function (activar_pestanya) {
+            var tabContainerssup = $('div.contenedor > div');
+
+            $('div.tab a').click(function () {
+                tabContainerssup.hide().filter(this.hash).show();
+
+                return false;
+            }).filter(':first').click();
+        });
+        //-->
+    </script>
+
 {% endblock contenido %}

@@ -1,106 +1,30 @@
-.estilo {
-    margin: 0 0 15px 0;
-    padding: 0;
-    width: 310px;
-}
-
-.ui-tabs-nav {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-}
-
-.ui-tabs-nav li {
-    margin: 0 2px 0 0;
-    padding: 0 5px 0 5px;
+.tab a {
+    display: block;
     float: left;
+    width: 100px;
     height: 30px;
-    border-top: 1px #3399FF solid;
-    border-right: 1px #3399FF solid;
-    border-left: 1px #3399FF solid;
-    font-family: Verdana, Arial, Helvetica, sans-serif;
-    font-size: 12px;
-    line-height: 30px;
-    text-transform: uppercase;
+    text-align: center;
+    border: 1px solid #666;
 }
 
-.ui-tabs-nav li:hover {
-    background: #EBEBEB;
-    color: #333333;
-}
-
-.ui-tabs-nav li:hover a {
-    color: #333333;
-}
-
-.ui-tabs-nav li {
-    background: #FFFFFF;
-}
-
-.ui-tabs-nav li a {
-    color: #336699;
-    text-decoration: none;
-}
-
-.ui-tabs-panel {
-    margin: 0;
-    padding: 5px;
-    float: none;
+.clear {
     clear: both;
-    border: #3399FF solid 1px;
-    width: 298px;
-    font-family: Verdana, Arial, Helvetica, sans-serif;
-    font-size: 12px;
-    color: #333333;
 }
 
-.ui-tabs-panel ul {
-    margin: 0;
-    padding: 0 0 0 15px;
+#primero {
+    background-color: red;
+    width: 100%;
+    height: 100%;
 }
 
-.ui-tabs-panel ul li {
-    margin: 0 0 5px 0;
+#segundo {
+    background-color: green;
+    width: 100%;
+    height: 100%;
 }
 
-.ui-tabs-panel a {
-    color: #336699;
-    text-decoration: none;
-}
-
-.ui-tabs-panel a:hover {
-    color: #3399FF;
-    text-decoration: underline;
-}
-
-.ui-tabs-hide {
-    margin: 0;
-    padding: 5px;
-    float: none;
-    clear: both;
-    display: none;
-    border: #3399FF solid 1px;
-    width: 298px;
-    font-family: Verdana, Arial, Helvetica, sans-serif;
-    font-size: 12px;
-    color: #333333;
-}
-
-.ui-tabs-hide ul {
-    margin: 0;
-    padding: 0 0 0 15px;
-}
-
-.ui-tabs-hide ul li {
-    margin: 0 0 5px 0;
-}
-
-.ui-tabs-hide a {
-    color: #336699;
-    text-decoration: none;
-}
-
-.ui-tabs-hide a:hover {
-    color: #3399FF;
-    text-decoration: underline;
+#tercero {
+    background-color: blue;
+    width: 100%;
+    height: 100%;
 }
