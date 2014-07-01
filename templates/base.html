@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html><!DOCTYPE html>
 <html>
 <head lang="es">
     <meta charset="UTF-8">
@@ -6,8 +6,13 @@
     {% block javascript %} {% endblock javascript %}
     {% block estilo %} {% endblock estilo %}
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css"/>
-    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
-    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+    <script src='http://code.jquery.com/jquery-1.9.1.js'></script>
+    <script src='http://code.jquery.com/ui/1.10.3/jquery-ui.js'></script>
+    {% load staticfiles %}
+    <link href="static/css/base.css" type="text/css" rel="stylesheet"/>
+    <link href="static/css/960.css" type="text/css" rel="stylesheet"/>
+    <link href="static/css/reset.css" type="text/css" rel="stylesheet"/>
+    <link href="static/css/text.css" type="text/css" rel="stylesheet"/>
 
     {#menu script#}
     <script>
@@ -17,40 +22,65 @@
     </script>
 </head>
 <body>
-<header> {% block encabezado %}{% endblock encabezado %}</header>
+<div id='top'>
 
-<nav>
-    <div style="position: absolute; top: 20px; left: 0px; z-index: 100">
-        <ul id="menu">
-            <li><a href="/">Inicio</a>
-            </li>
-            <li><a href="#">Clientes</a>
-                <ul>
-                    <li><a href="/cliente/nuevo/">Nuevo</a></li>
-                    <li><a href="/cliente/listado/">Listado de Clientes</a></li>
-            </li>
-        </ul>
-        </li>
-        <li><a href="/siniestro/nuevo/1">Siniestro</a>
-            <ul>
-                <li><a href="">Listado</a></li>
-                <li><a href="#32">Filtrados</a></li>
+    <div class='container 12' id="nav">
+        <div>
+            <ul id="menu">
+                <li><a href="/">Inicio</a></li>
+                <li><a href="#">Clientes</a>
+                    <ul>
+                        <li><a href="/cliente/nuevo/">Nuevo</a></li>
+                        <li><a href="/cliente/listado/">Listado de Clientes</a></li>
+                    </ul>
+                </li>
+
+                <li><a href="/siniestro/nuevo/1">Siniestro</a>
+                    <ul>
+                        <li><a href="">Listado</a></li>
+                        <li><a href="#">Filtrados</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Opciones</a>
+                    <ul>
+                        <li><a href="/aseguradora/nuevo">Aseguradora</a></li>
+                        <li><a href="/profesional/nuevo">Profesionales</a></li>
+                        <li><a href="/agente/nuevo">Agentes</a></li>
+                    </ul>
+                </li>
             </ul>
-        </li>
-        <li><a href="#">Opciones</a>
-            <ul>
-                <li><a href="/aseguradora/nuevo">Aseguradora</a></li>
-                <li><a href="/profesional/nuevo">Profesionales</a></li>
-                <li><a href="/agente/nuevo">Agentes</a></li>
-            </ul>
-        </li>
-        </ul>
+        </div>
     </div>
-</nav>
+    <!--menu-->
 
-<section class="contenido">
-    {% block contenido %}{% endblock contenido %}
-</section>
+    <div class="clear"></div>
+</div>
+<!--top-->
 
+<div class="container_12" id="bodyMain">
+    <div class="grid_12" id="header">
+        <header> {% block encabezado %}{% endblock encabezado %}</header>
+    </div>
+    <!--header-->
+
+    <div class="grid_12" id="contentMain">
+
+        {% block contenido %}{% endblock contenido %}
+
+    </div>
+    <!--contentMain-->
+    <div class="grid_4 prefix_8" id="footer">
+
+    </div>
+    <!--footer-->
+    <div class="clearfix"></div>
+</div>
+<!--bodyMain-->
+
+</body>
+</html>
+
+
+</div>
 </body>
 </html>

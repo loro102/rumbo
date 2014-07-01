@@ -5,35 +5,38 @@ from django.core.exceptions import ValidationError
 from localflavor.es.forms import *
 from localflavor.generic.forms import *
 
-from principal.models import cliente, agente, siniestro, aseguradora, tramitadorcia, profesional, factura, \
-	documentacion, nota
+from principal.models import Cliente, Agente, Siniestro, Aseguradora, Tramitadorcia, Profesional, Factura, \
+	Documentacion, Nota
 
-#Formulario para introducir clientes
-class clienteform (ModelForm):
+# Formulario para introducir clientes
+# noinspection PyPep8
+class Clienteform (ModelForm):
 	nif = ESIdentityCardNumberField (help_text='Introduzca el Dni,el Cif o el Nief')
 	postal = ESPostalCodeField (help_text='Introduzca el código postal')
 	ccc = ESCCCField (help_text='Introduzca la Cuenta Bancaria', required=False)
 
 	class Meta:
-		model = cliente
+		model = Cliente
 
 
-#Formulario para introducir agentes
-class agenteform (ModelForm):
+# Formulario para introducir agentes
+# noinspection PyPep8
+class Agenteform (ModelForm):
 	nif = ESIdentityCardNumberField (help_text='Introduzca el Dni,el Cif o el Nief')
 	postal = ESPostalCodeField (help_text='Introduzca el código postal')
 	ccc = ESCCCField (help_text='Introduzca la Cuenta Bancaria', required=False)
 
 	class Meta:
-		model = agente
+		model = Agente
 
 
 # Formulario para introducir siniestros
-class siniestroform (ModelForm):
+# noinspection PyPep8
+class Siniestroform (ModelForm):
 	reprenif = ESIdentityCardNumberField (help_text='Introduzca el Dni,el Cif o el Nief', required=False)
 
 	class Meta:
-		model = siniestro
+		model = Siniestro
 		exclude = ['cliente', 'fase', 'demanda', 'denuncia', 'juicio', 'audienciaprevia',
 		           'ofertamotivada', 'respuestamotivada']
 		widgets = dict (fechasiniestro=forms.DateTimeInput (format='%d/%m/%y', attrs={'type': 'date'}),
@@ -45,45 +48,43 @@ class siniestroform (ModelForm):
 		                altadireccion=forms.DateInput (format='%d/%m/%y', attrs={'type': 'date'}),
 		                fechapoliza=forms.DateInput (format='%d/%m/%y', attrs={'type': 'date'}),
 		                finpoliza=forms.DateInput (format='%d/%m/%y', attrs={'type': 'date'}),
-
-
 		)
 
 
 # Formulario para introducir aseguradoras
-class aseguradoraform (ModelForm):
+class Aseguradoraform (ModelForm):
 	class Meta:
-		model = aseguradora
+		model = Aseguradora
 
 
 # Formulario para introducir tramitadores de aseguradoras
-class tramitadorciaform (ModelForm):
+class Tramitadorciaform (ModelForm):
 	class Meta:
-		model = tramitadorcia
+		model = Tramitadorcia
 		exclude = ['aseguradora']
 
 
 # Formulario para introducir profesionales
-class profesionalform (ModelForm):
+class Profesionalform (ModelForm):
 	class Meta:
-		model = profesional
+		model = Profesional
 
 
 # Formulario para introducir documentacion
-class facturaform (ModelForm):
+class Facturaform (ModelForm):
 	class Meta:
-		model = factura
+		model = Factura
 
 
 # Formulario para introducir facturas
-class documentacionform (ModelForm):
+class Documentacionform (ModelForm):
 	class Meta:
-		model = documentacion
+		model = Documentacion
 
 	# Formulario para introducir facturas
 
 
 # Formulario para introducir notas
-class notaform (ModelForm):
+class Notaform (ModelForm):
 	class Meta:
-		model = nota
+		model = Nota

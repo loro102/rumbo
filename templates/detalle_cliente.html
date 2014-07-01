@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block titulo %} {{ cliente.nombre }} {{ cliente.apellido1 }} {{ cliente.apellido2 }}{% endblock titulo %}
+{% block encabezado %}
+    <div style="text-align: center;"> <h1>{{ cliente.nombre }} {{ cliente.apellido1 }} {{ cliente.apellido2 }}</h1>
+    </div>{% endblock encabezado %}
+{% block estilo %}{% load staticfiles %}
+    <link href="static/css/listado.css" type="text/css" rel="stylesheet"/>
+{% endblock estilo %}
+{% block contenido %}
+    <h2>Datos del cliente</h2>
+
+    <li>Nombre y apellidos:{{ cliente.nombre }} {{ cliente.apellido1 }} {{ cliente.apellido2 }}</li>
+    <li>DNI,CIF o NIE:{{ cliente.nif }}</li>
+    <li>Dirección:{{ cliente.direccion }} {{ cliente.postal }} {{ cliente.localidad }} {{ cliente.provincia }}</li>
+    Datos de contacto:{{ cliente.telefono }} {{ cliente.telefono2 }} {{ cliente.mobil }} {{ cliente.email }}<br>
+    Otros Datos:{{ cliente.agente }} {{ cliente.ccc }} {{ cliente.notas }}
+
+    <br>
+    <a href="/siniestro/nuevo/{{ cliente.id }}"> Nuevo Siniestro</a>
+    <br>
+    <br>
+    <div class="tabla">
+        <table>
+            <tr>
+                <td>
+                    Descripcion del siniestro
+                </td>
+                <td>
+                    Fecha de siniestro
+                </td>
+            </tr>{% for elemento in siniestros %}
+            <tr>
+                <td>
+                    <a href='/cliente/detalle/{{ elemento.id }}'>{{ elemento.descripcion }}</a>
+                </td>
+                <td>
+                    {{ elemento.fechasiniestro }}
+                </td>
+
+            </tr>{% empty %}Este Cliente no tiene siniestros{% endfor %}
+        </table>
+    </div>
+{% endblock contenido %}

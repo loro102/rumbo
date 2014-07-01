@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block titulo %} Nuevo Cliente{% endblock titulo %}
+{% block encabezado %}
+    <div style="text-align: center;"><h1>Nuevo Cliente</h1></div>{% endblock encabezado %}
+{% block estilo %}{% load staticfiles %}
+    <link href="static/css/listado.css" type="text/css" rel="stylesheet"/>
+{% endblock estilo %}
+{% block javascript %}
+    <script src="http://code.jquery.com/jquery-latest.js">
+        <!--
+        mce:0-->
+    </script>
+    <script src="http://dev.jquery.com/view/tags/ui/latest/ui/ui.core.js" type="text/javascript">
+        <!--
+        mce:1-->
+    </script>
+    <script src="http://dev.jquery.com/view/tags/ui/latest/ui/ui.tabs.js" type="text/javascript">
+        <!--
+        mce:2-->
+    </script>
+    <script type="text/javascript">
+        <!--
+        mce:3-->
+    </script>
+{% endblock %}
+{% block contenido %}
+    <div id="EJEMPLO" class="estilo">
+        <ul>
+            <li><a href="#tab-1">Título 1</a></li>
+            <li><a href="#tab-2">Título 2</a></li>
+        </ul>
+        <div id="tab-1">
+            Aquí el contenido
+        </div>
+        <div id="tab-2">
+            Aquí el contenido
+        </div>
+    </div>
+{% endblock contenido %}

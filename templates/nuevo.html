@@ -1,9 +1,9 @@
 {% extends 'base.html' %}
 {% block titulo %} Nuevo{% endblock titulo %}
 {% block encabezado %}
-    <center><h1>Nuevo</h1></center>{% endblock encabezado %}
+    <div style="text-align: center;"><h1>Nuevo</h1></div>{% endblock encabezado %}
 {% block estilo %}{% load staticfiles %}
-    <link href="static/css/base.css" type="text/css" rel="stylesheet"/>
+    <link href="static/css/formulario.css" type="text/css" rel="stylesheet"/>
 {% endblock estilo %}
 {% block javascript %}
 
@@ -12,17 +12,15 @@
     <form id="formulario" method="post" enctype="multipart/form-data" action="" class='formulario'>{% csrf_token %}
 
         {% for field in formulario %}
-                <div class="{{ field.name }}">
+            <div class="{{ field.name }}">
 
-                    <div class="error">
-                        {{ field.label_tag }} <span class="tooltip" title="{{ field.help_text }}">{{ field }} </span>
-                        {{ field.errors }}
-                    </div>
-
+                <div class="error">
+                    {{ field.label_tag }} <span class="tooltip" title="{{ field.help_text }}">{{ field }} </span>
+                    {{ field.errors }}
                 </div>
-            {% endfor %}
-            <input type="submit" value="dar de alta" class="boton"/>
+
+            </div>
+        {% endfor %}
+        <input type="submit" value="dar de alta" class="boton"/>
     </form>
 {% endblock contenido %}
-</body>
-</html>
