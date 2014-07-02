@@ -34,13 +34,13 @@
 
 
     <div class="tab">
-        <a href="#primero">Principal</a><a href="#profesional">Profesionales</a><a href="#tercero">Facturas</a><a
-            href="#cuarto">Documentacion</a><a href="#quinto">Indemnizacion</a><a href="#sexto">Notas</a>
+        <a href="#principal">Principal</a><a href="#profesional">Profesionales</a><a href="#facturas">Facturas</a><a
+            href="#documentacion">Documentacion</a><a href="#indemnizacion">Indemnizacion</a><a href="#notas">Notas</a>
 
         <div class="clear"></div>
     </div>
     <div class="contenedor">
-        <div id="primero">hola</div>
+        <div id="principal">{{ cliente.nombre }} {{ cliente.apellido1 }} {{ cliente.apellido2 }}</div>
         <div id="profesional">
             <div class="tabla">
                 <table>
@@ -69,10 +69,68 @@
                 </table>
             </div>
         </div>
-        <div id="tercero">{{ cliente.nombre }}cruel</div>
-        <div id="cuarto">sin</div>
-        <div id="quinto">corazon</div>
-        <div id="sexto">maldito</div>
+        <div id="facturas">
+            <div class="tabla">
+                <table>
+                    <tr>
+                        <td>
+                            Factura nº
+                        </td>
+                        <td>
+                            Descripcion
+                        </td>
+                        <td>
+                            Importe
+                        </td>
+                    </tr>{% for elemento in facturas %}
+                    <tr>
+                        <td>
+                            {{ elemento.numero }} </a>
+                        </td>
+                        <td>
+                            {{ elemento.fecha }}
+                        </td>
+                        <td>
+                            {{ elemento.totalcli }}
+                        </td>
+                    </tr>{% endfor %}
+                </table>
+            </div>
+            <br>
+            {{ total }}
+            {{ total1 }}
+        </div>
+        <div id="documentacion">sin</div>
+        <div id="indemnizacion">corazon</div>
+        <div id="notas">
+            <div class="tabla">
+                <table>
+                    <tr>
+                        <td>
+                            Fecha
+                        </td>
+                        <td>
+                            Usuario
+                        </td>
+                        <td>
+                            Nota
+                        </td>
+                    </tr>{% for elemento in nota %}
+                    <tr>
+                        <td>
+                            {{ elemento.escrito|date:'SHORT_DATETIME_FORMAT' }}</a>
+                        </td>
+                        <td>
+                            {{ elemento.usuario }}
+                        </td>
+                        <td>
+                            {{ elemento.nota }}
+                        </td>
+                    </tr>{% empty %}No hay ninguna nota introducida
+                {% endfor %}
+                </table>
+            </div>
+        </div>
 
     </div>
     <script language="javascript">

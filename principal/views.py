@@ -5,6 +5,7 @@ from django.template import RequestContext
 from django.core.mail import EmailMessage
 from django.shortcuts import render_to_response, get_object_or_404, render
 from django.contrib.auth.forms import UserCreationForm
+from django.db.models import Sum
 
 from principal.models import Cliente, Aseguradora, Siniestro, Factura, Profesional, Nota, Asignado, Documentacion
 # noinspection PyPep8
@@ -34,15 +35,18 @@ def cliente_detalle (request, cliente_id):
 
 def siniestro_detalle (request, siniestro_id):
 	dato = get_object_or_404 (Siniestro, pk=siniestro_id)
-	cliente = Cliente.objects.filter (id=dato.cliente)
+	client = dato.cliente_id
+	cliente = Cliente.objects.get (id=dato.cliente_id)
 	facturas = Factura.objects.filter (siniestro=dato)
-	notas = Nota.objects.filter (siniestro=dato)
+	total = Factura.objects.filter (siniestro=dato).aggregate (Sum ('totalfact'))
+	total1 = total - (total * 0.21)
+	nota = Nota.objects.filter (siniestro=dato)
 	documentacion = Documentacion.objects.filter (siniestro=dato)
 	asignado = Asignado.objects.filter (siniestro=dato)
 
 	return render_to_response ('detalle_siniestro.html',
-	                           {'cliente': cliente, 'siniestro': dato, 'facturas': facturas, 'notas': notas,
-	                            'documentacion': documentacion, 'asignado': asignado},
+	                           {'siniestro': dato, 'cliente': cliente, 'facturas': facturas, 'nota': nota,
+	                            'documentacion': documentacion, 'asignado': asignado, 'total': total, 'total1': total1},
 	                           context_instance=RequestContext (request))
 
 

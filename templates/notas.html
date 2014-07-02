@@ -1,0 +1,9 @@
+{% extends 'detalle_siniestro.html' %}
+
+{% {% block notas %}
+    {% for data in notas }}
+        {{ data.escrito }} {{ data.usuario }}: {{ data.nota }}
+        {{% empty %}
+        no hay notas
+    {% endfor data %}
+{% endblock %}

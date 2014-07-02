@@ -231,7 +231,7 @@ class Documentacion (models.Model):
 class Nota (models.Model):
 	id = models.AutoField (unique=True, primary_key=True)
 	siniestro = models.ForeignKey (Siniestro)
-	escrito = models.DateField (auto_now=True)
+	escrito = models.DateTimeField (auto_now=True)
 	usuario = models.CharField (max_length=255)
 	nota = models.TextField ()
 
