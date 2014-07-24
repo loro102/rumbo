@@ -39,8 +39,8 @@ class Siniestroform (ModelForm):
 		model = Siniestro
 		exclude = ['cliente', 'fase', 'demanda', 'denuncia', 'juicio', 'audienciaprevia',
 		           'ofertamotivada', 'respuestamotivada']
-		widgets = dict (fechasiniestro=forms.DateTimeInput (format='%d/%m/%y', attrs={'type': 'date'}),
-		                horasiniestro=forms.DateTimeInput (format='%H:%m', attrs={'type': 'time'}),
+		widgets = dict (fechasiniestro=forms.DateInput (format='%d/%m/%y'),
+		                horasiniestro=forms.TimeInput (format='%H:%m'),
 		                fechabajalaboral=forms.DateInput (format='%d/%m/%y', attrs={'type': 'date'}),
 		                fechaaltalaboral=forms.DateInput (format='%d/%m/%y', attrs={'type': 'date'}),
 		                ingresohospitalario=forms.DateInput (format='%d/%m/%y', attrs={'type': 'date'}),
@@ -48,6 +48,24 @@ class Siniestroform (ModelForm):
 		                altadireccion=forms.DateInput (format='%d/%m/%y', attrs={'type': 'date'}),
 		                fechapoliza=forms.DateInput (format='%d/%m/%y', attrs={'type': 'date'}),
 		                finpoliza=forms.DateInput (format='%d/%m/%y', attrs={'type': 'date'}),
+		)
+
+
+class Siniestrofullform (ModelForm):
+	reprenif = ESIdentityCardNumberField (help_text='Introduzca el Dni,el Cif o el Nief', required=False)
+
+	class Meta:
+		model = Siniestro
+		exclude = ['cliente']
+		widgets = dict (fechasiniestro=forms.DateInput (format='%d/%m/%y'),
+		                horasiniestro=forms.TimeInput (format='%H:%m'),
+		                fechabajalaboral=forms.DateInput (format='%d/%m/%y'),
+		                fechaaltalaboral=forms.DateInput (format='%d/%m/%y'),
+		                ingresohospitalario=forms.DateInput (format='%d/%m/%y'),
+		                altahospitalaria=forms.DateInput (format='%d/%m/%y'),
+		                altadireccion=forms.DateInput (format='%d/%m/%y'),
+		                fechapoliza=forms.DateInput (format='%d/%m/%y'),
+		                finpoliza=forms.DateInput (format='%d/%m/%y'),
 		)
 
 

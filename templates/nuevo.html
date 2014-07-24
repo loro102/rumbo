@@ -1,12 +1,14 @@
 {% extends 'base.html' %}
-{% block titulo %} Nuevo{% endblock titulo %}
+{% block titulo %} {{ titulo|capfirst }} {{ cliente.nombre|capfirst }} {{ cliente.apellido1|capfirst }}
+    {{ cliente.apellido2|capfirst }}{% endblock titulo %}
 {% block encabezado %}
-    <div style="text-align: center;"><h1>Nuevo</h1></div>{% endblock encabezado %}
+    <div style="text-align: center;">
+        <h1> {{ titulo|capfirst }} {{ cliente.nombre|capfirst }} {{ cliente.apellido1|capfirst }} {{ cliente.apellido2|capfirst }}</h1>
+    </div>{% endblock encabezado %}
 {% block estilo %}{% load staticfiles %}
     <link href="static/css/formulario.css" type="text/css" rel="stylesheet"/>
 {% endblock estilo %}
 {% block javascript %}
-
 {% endblock javascript %}
 {% block contenido %}
     <form id="formulario" method="post" enctype="multipart/form-data" action="" class='formulario'>{% csrf_token %}

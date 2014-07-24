@@ -13,6 +13,9 @@ urlpatterns = patterns ('',
                         # url(r'^blog/', include('blog.urls')),
                         # Aqui iran todos los enlaces del programa
                         # url (r'^$', 'principal.views.inicio'),
+                        # #################################### Autentificacion de usuarios ########################
+                        url (r'^ingresar/$', 'principal.views.ingresar'),
+
                         # ################################### Clientes ###########################################
                         url (r'^cliente/listado/$', 'principal.views.lista_clientes'),
                         # Enlace para listado de clientes
@@ -20,10 +23,14 @@ urlpatterns = patterns ('',
                         # enlace detalle cliente
                         url (r'^cliente/nuevo/$', 'principal.views.nuevo_cliente'),
                         #Enlace para clientes nuevos
+                        url (r'^cliente/editar/(?P<cliente_id>\d+)', 'principal.views.editar_cliente'),
+                        # enlace para editar clientes
 
                         # ##################################### Agentes ##########################################
                         url (r'^agente/nuevo/$', 'principal.views.nuevo_agente'),
                         # Enlace para insertar agentes nuevos
+                        url (r'^agente/editar/(?P<agente_id>\d+)', 'principal.views.editar_agente'),
+                        # enlace para editar agentes
 
                         # ########################################## Siniestros ###################################
 
@@ -31,16 +38,25 @@ urlpatterns = patterns ('',
                         # enlace detalle siniestro
                         url (r'^siniestro/nuevo/(?P<cliente_id>\d+)', 'principal.views.nuevo_siniestro'),
                         # enlace para insertar siniestros
+                        url (r'^siniestro/editar/(?P<siniestro_id>\d+)', 'principal.views.editar_siniestro'),
+                        # enlace para editar siniestros
 
                         ########################################### Aseguradoras ################################
                         url (r'^aseguradora/nuevo/$', 'principal.views.nueva_aseguradora'),
                         # enlace para insertar aseguradoras
                         url (r'^tramitadorcia/nuevo/(?P<aseguradora_id>\d+)', 'principal.views.nuevo_tramitadorcia'),
                         # enlace para insertar tramitadores de las aseguradoras
+                        url (r'^aseguradora/editar/(?P<aseguradora_id>\d+)', 'principal.views.editar_aseguradora'),
+                        # enlace para editar aseguradoras
+                        url (r'^tramitadorcia/editar/(?P<tramitadorcia_id>\d+)',
+                             'principal.views.editar_tramitadorcia'),
+                        # enlace para editar tramitador cia
 
                         ############################################ Profesionales ###############################
                         url (r'^profesional/nuevo/$', 'principal.views.nuevo_profesional'),
                         # enlace para insertar profesionales
+                        url (r'^profesional/editar/(?P<profesional_id>\d+)', 'principal.views.editar_profesional'),
+                        # enlace para editar profesionales
 
                         ############################################ Otros #######################################
                         url (r'^chaining/', include ('smart_selects.urls')),

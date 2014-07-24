@@ -40,7 +40,11 @@
         <div class="clear"></div>
     </div>
     <div class="contenedor">
-        <div id="principal">{{ cliente.nombre }} {{ cliente.apellido1 }} {{ cliente.apellido2 }}</div>
+        <div id="principal">
+
+            {{ cliente.nombre }} {{ cliente.apellido1 }} {{ cliente.apellido2 }}
+
+        </div>
         <div id="profesional">
             <div class="tabla">
                 <table>
@@ -91,12 +95,24 @@
                             {{ elemento.fecha }}
                         </td>
                         <td>
-                            {{ elemento.totalcli }}
+                            {{ elemento.totalfact }}&euro;
                         </td>
                     </tr>{% endfor %}
+                    <tr>
+                        <td></td>
+                        <td>
+                            total:
+                        </td>
+                        <td>
+                            {{ totalfactura }}&euro;
+                        </td>
+
+                    </tr>
                 </table>
             </div>
             <br>
+            {% load mathfilters %}
+            total:
             {{ total }}
             {{ total1 }}
         </div>
